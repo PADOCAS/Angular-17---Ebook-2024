@@ -5,9 +5,7 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      @for (item of menuItems; track item.path) {
-        <a mat-list-item [href]="item.path">{{item.label}}</a>
-      }
+      <app-menu></app-menu>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
