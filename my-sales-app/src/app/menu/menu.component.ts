@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatListModule} from "@angular/material/list";
+import {MenuItem} from "../../interface/MenuItem";
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,7 @@ import {MatListModule} from "@angular/material/list";
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  menuItems: Array<{path: string; label: string}> = [
+  menuItems: Array<MenuItem> = [
     {
       path: '/',
       label: 'Início'
