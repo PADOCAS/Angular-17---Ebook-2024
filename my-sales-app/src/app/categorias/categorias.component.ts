@@ -34,6 +34,7 @@ export class CategoriasComponent implements AfterViewInit {
   }
 
   async loadCategorias(): Promise<void> {
+    //Chamada assincrona, para alimentar  o data source ele aguarda a resposta do service com as categorias:
     let categories = await lastValueFrom(this.categoriaService.getCategorias());
     this.dataSource = new MatTableDataSource(categories);
     this.table.dataSource = this.dataSource;
