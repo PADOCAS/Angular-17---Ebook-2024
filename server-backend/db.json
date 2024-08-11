@@ -1,49 +1,54 @@
 {
-  "categories": [
+  "categorias": [
     {
       "id": 2,
-      "name": "Condiments 2",
-      "description": "Sweet and savory sauces relishes spreads and seasonings"
+      "nome": "Sopas",
+      "descricao": "Sopas variadas"
     },
     {
       "id": 1,
-      "description": "Soft drinks coffees teas beers and ales",
-      "name": "Beverages"
+      "nome": "Bebidas",
+      "descricao": "Bebidas curtas, café, chás e sucos"
     },
     {
       "id": 3,
-      "description": "Desserts candies and sweet breads",
-      "name": "Confections"
+      "nome": "Confeitaria",
+      "descricao": "Sobremesas e bolos"
     },
     {
       "id": 4,
-      "description": "Cheeses",
-      "name": "Dairy Products"
+      "nome": "Produtos Derivados do Leite",
+      "descricao": "Queijos"
     },
     {
       "id": 5,
-      "description": "Breads crackers pasta and cereal",
-      "name": "Grains/Cereals"
+      "nome": "Massas/Cereal",
+      "descricao": "Pão, massas e cereal"
     },
     {
       "id": 6,
-      "description": "Prepared meats",
-      "name": "Meat/Poultry"
+      "nome": "Carnes",
+      "descricao": "Carnes preparadas"
     },
     {
       "id": 7,
-      "description": "Dried fruit and bean curd",
-      "name": "Produce"
+      "nome": "Frutas",
+      "descricao": "Frutas"
     },
     {
       "id": 8,
-      "description": "Seaweed and fish",
-      "name": "Seafood"
+      "nome": "Frutos do mar",
+      "descricao": "Crustáceos e Peixes"
     },
     {
       "id": 9,
-      "name": "foo",
-      "description": "bar"
+      "nome": "Sorvetes",
+      "descricao": "Sorvetes"
+    },
+    {
+      "id": 10,
+      "nome": "Tortas",
+      "descricao": "Tortas a base de leite e veganas"
     }
   ],
   "products": [

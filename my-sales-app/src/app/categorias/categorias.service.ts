@@ -13,6 +13,6 @@ export class CategoriasService {
   }
 
   public getCategorias():Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(environment.api + "categories");
+    return this.http.get<Categoria[]>(environment.api + "categorias");
   }
 }
