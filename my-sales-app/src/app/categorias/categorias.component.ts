@@ -1,15 +1,17 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatTableModule, MatTable } from '@angular/material/table';
-import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
-import { MatSortModule, MatSort } from '@angular/material/sort';
-import { CategoriasDataSource, CategoriasItem } from './categorias-datasource';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatTable, MatTableModule} from '@angular/material/table';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {CategoriasDataSource, CategoriasItem} from './categorias-datasource';
+import {MatCardModule} from "@angular/material/card";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
   styleUrl: './categorias.component.css',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButton]
 })
 export class CategoriasComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
