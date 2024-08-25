@@ -8,6 +8,7 @@ import {MatButton} from "@angular/material/button";
 import {Categoria} from "../../interface/Categoria";
 import {CategoriasService} from "./categorias.service";
 import {lastValueFrom} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-categorias',
@@ -23,7 +24,7 @@ export class CategoriasComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<Categoria>();
 
 
-  constructor(private categoriaService: CategoriasService) {
+  constructor(private categoriaService: CategoriasService, private router: Router) {
   }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -40,5 +41,9 @@ export class CategoriasComponent implements AfterViewInit {
     this.table.dataSource = this.dataSource;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  navegarParaCadCategoria() {
+    this.router.navigate(['/cad-categoria']);  // Navegue para a rota desejada
   }
 }
