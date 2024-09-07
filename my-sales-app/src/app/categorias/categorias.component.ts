@@ -9,13 +9,15 @@ import {Categoria} from "../../interface/Categoria";
 import {CategoriasService} from "./categorias.service";
 import {lastValueFrom} from "rxjs";
 import {Router} from "@angular/router";
+import {MatIconModule} from "@angular/material/icon";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
   styleUrl: './categorias.component.css',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButton]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButton, MatIconModule, MatTooltipModule]
 })
 export class CategoriasComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -28,7 +30,7 @@ export class CategoriasComponent implements AfterViewInit {
   }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'nome', 'descricao'];
+  displayedColumns = ['id', 'nome', 'descricao', 'editar'];
 
   ngAfterViewInit(): void {
     this.loadCategorias();
@@ -45,5 +47,9 @@ export class CategoriasComponent implements AfterViewInit {
 
   navegarParaCadCategoria() {
     this.router.navigate(['/cad-categoria']);  // Navegue para a rota desejada
+  }
+
+  onClickEditar(categoria: Categoria) {
+    console.log('Editando Categoria: ', categoria);
   }
 }
