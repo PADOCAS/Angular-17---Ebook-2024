@@ -4,6 +4,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {Router} from "@angular/router";
+import {Categoria} from "../../../interface/Categoria";
+import {CategoriasService} from "../categorias.service";
+import {lastValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-cad-categoria',
@@ -24,11 +27,30 @@ export class CadCategoriaComponent {
     descricao: ['', [Validators.required]]
   })
 
-  constructor(private form: FormBuilder, private router : Router) {
+  constructor(private categoriaService: CategoriasService, private form: FormBuilder, private router : Router) {
   }
 
   onSubmit() {
     console.log('Submit', this.categoriaForm.value);
+    this.onSave(this.convertFormBuilderGroupToCategoria());
+  }
+
+  //Converte o formBuilderGroup com seu value para o objeto categoria:
+  private convertFormBuilderGroupToCategoria(): Categoria {
+    let value = this.categoriaForm.value;
+
+    return {
+      id: value.id ?? 0,
+      nome: value.nome || '',
+      descricao: value.descricao || ''
+    };
+  }
+
+  async onSave(categoria: Categoria) {
+    let saved = lastValueFrom(this.categoriaService.salvar(categoria));
+    console.log('Categoria salva: ', saved);
+    //Ao salvar redireciona para a listagem:
+    this.router.navigate(["/categorias"]);
   }
 
   cancelar() {
