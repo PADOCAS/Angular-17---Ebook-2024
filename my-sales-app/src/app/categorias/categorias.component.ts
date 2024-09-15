@@ -51,5 +51,12 @@ export class CategoriasComponent implements AfterViewInit {
 
   onClickEditar(categoria: Categoria) {
     console.log('Editando Categoria: ', categoria);
+
+    if (categoria !== undefined
+      && categoria !== null
+      && categoria.id !== undefined
+      && categoria.id !== null) {
+      this.router.navigate(['/cad-categoria-edit', categoria.id]);
+    }
   }
 }

@@ -4,16 +4,8 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {CadCategoriaComponent} from "./categorias/cad-categoria/cad-categoria.component";
 
 export const routes: Routes = [
-  {
-    path: 'categorias',
-    component: CategoriasComponent
-  },
-  {
-    path: 'cad-categoria',
-    component: CadCategoriaComponent
-  },
-  {
-    path: '',
-    component: DashboardComponent
-  }
+  {path: 'categorias',component: CategoriasComponent},
+  {path: 'cad-categoria',component: CadCategoriaComponent},
+  {path: 'cad-categoria-edit/:id', component: CadCategoriaComponent},
+  {path: '',component: DashboardComponent}
 ];

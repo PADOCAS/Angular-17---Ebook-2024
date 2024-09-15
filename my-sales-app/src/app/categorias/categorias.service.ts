@@ -26,4 +26,8 @@ export class CategoriasService {
       return this.http.post<Categoria>(environment.api + 'categorias', categoria);
     }
   }
+
+  public pegar(id: number): Observable<Categoria> {
+    return this.http.get<Categoria>(environment.api + 'categorias/' + id);
+  }
 }

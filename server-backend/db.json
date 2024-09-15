@@ -54,6 +54,31 @@
       "id": 11,
       "nome": "dfsdf",
       "descricao": "sdfdsfdsf"
+    },
+    {
+      "id": 12,
+      "nome": "Sorvetes",
+      "descricao": "Sorvetes de Creme de Milho"
+    },
+    {
+      "id": 13,
+      "nome": "Confeitaria Rei",
+      "descricao": "Sobremesas e bolos"
+    },
+    {
+      "id": 14,
+      "nome": "Confeitaria sadas",
+      "descricao": "Sobremesas e bolos"
+    },
+    {
+      "id": 15,
+      "nome": "Bebidasfdffds sdfdsf",
+      "descricao": "Bebidas curtas, café, chás e sucosdsfdsfsdff"
+    },
+    {
+      "id": 16,
+      "nome": "Torta de Frango",
+      "descricao": "Torta Maravilhosa de Mamãe"
     }
   ],
   "products": [
