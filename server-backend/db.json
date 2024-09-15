@@ -1,14 +1,14 @@
 {
   "categorias": [
     {
-      "id": 2,
-      "nome": "Sopas",
-      "descricao": "Sopas variadas"
-    },
-    {
       "id": 1,
       "nome": "Bebidas",
       "descricao": "Bebidas curtas, café, chás e sucos"
+    },
+    {
+      "id": 2,
+      "nome": "Sopas",
+      "descricao": "Sopas variadas"
     },
     {
       "id": 3,
