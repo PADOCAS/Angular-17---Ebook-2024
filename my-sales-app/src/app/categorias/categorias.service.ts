@@ -30,4 +30,8 @@ export class CategoriasService {
   public pegar(id: number): Observable<Categoria> {
     return this.http.get<Categoria>(environment.api + 'categorias/' + id);
   }
+
+  public deletar(id: number): Observable<Categoria> {
+    return this.http.delete<Categoria>(environment.api + 'categorias/' + id);
+  }
 }

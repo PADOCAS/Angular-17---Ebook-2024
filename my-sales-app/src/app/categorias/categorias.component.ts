@@ -30,7 +30,7 @@ export class CategoriasComponent implements AfterViewInit {
   }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'nome', 'descricao', 'editar'];
+  displayedColumns = ['id', 'nome', 'descricao', 'editar', 'excluir'];
 
   ngAfterViewInit(): void {
     this.loadCategorias();
@@ -57,6 +57,24 @@ export class CategoriasComponent implements AfterViewInit {
       && categoria.id !== undefined
       && categoria.id !== null) {
       this.router.navigate(['/cad-categoria-edit', categoria.id]);
+    }
+  }
+
+  async onClickDeletar(categoria: Categoria) {
+    console.log('Excluindo Categoria: ', categoria);
+
+    if (categoria !== undefined
+      && categoria !== null
+      && categoria.id !== undefined
+      && categoria.id !== null) {
+      if(confirm(`Deletar Categoria (${categoria.id}) ${categoria.nome} ?`)) {
+        this.categoriaService.deletar(categoria.id).subscribe(
+          data => {
+            //Carregar Categorias após deletar:
+            this.loadCategorias();
+          }
+        );
+      }
     }
   }
 }

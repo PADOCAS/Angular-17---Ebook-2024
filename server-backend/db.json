@@ -8,12 +8,12 @@
     {
       "id": 2,
       "nome": "Sopas",
-      "descricao": "Sopas variadas"
+      "descricao": "Sopas variadas da Tia Luzia"
     },
     {
       "id": 3,
       "nome": "Confeitaria",
-      "descricao": "Sobremesas e bolos"
+      "descricao": "Sobremesas e bolos entre outros"
     },
     {
       "id": 4,
@@ -51,11 +51,6 @@
       "descricao": "Tortas a base de leite e veganas"
     },
     {
-      "id": 11,
-      "nome": "dfsdf",
-      "descricao": "sdfdsfdsf"
-    },
-    {
       "id": 12,
       "nome": "Sorvetes",
       "descricao": "Sorvetes de Creme de Milho"
@@ -66,19 +61,14 @@
       "descricao": "Sobremesas e bolos"
     },
     {
-      "id": 14,
-      "nome": "Confeitaria sadas",
-      "descricao": "Sobremesas e bolos"
-    },
-    {
-      "id": 15,
-      "nome": "Bebidasfdffds sdfdsf",
-      "descricao": "Bebidas curtas, café, chás e sucosdsfdsfsdff"
-    },
-    {
       "id": 16,
       "nome": "Torta de Frango",
       "descricao": "Torta Maravilhosa de Mamãe"
+    },
+    {
+      "id": 17,
+      "nome": "Pipoca",
+      "descricao": "Pipoca Doce e Salgada"
     }
   ],
   "products": [
