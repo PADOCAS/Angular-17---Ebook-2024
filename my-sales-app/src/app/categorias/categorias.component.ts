@@ -11,19 +11,21 @@ import {lastValueFrom} from "rxjs";
 import {Router} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {LoadingBarComponent} from "../util/loading-bar/loading-bar.component";
 
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
   styleUrl: './categorias.component.css',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButton, MatIconModule, MatTooltipModule]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButton, MatIconModule, MatTooltipModule, LoadingBarComponent]
 })
 export class CategoriasComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<CategoriasItem>;
   dataSource = new MatTableDataSource<Categoria>();
+  showLoading: Boolean = false
 
 
   constructor(private categoriaService: CategoriasService, private router: Router) {
@@ -38,11 +40,13 @@ export class CategoriasComponent implements AfterViewInit {
 
   async loadCategorias(): Promise<void> {
     //Chamada assincrona, para alimentar  o data source ele aguarda a resposta do service com as categorias:
+    this.showLoading = true;
     let categories = await lastValueFrom(this.categoriaService.getCategorias());
     this.dataSource = new MatTableDataSource(categories);
     this.table.dataSource = this.dataSource;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.showLoading = false;
   }
 
   navegarParaCadCategoria() {
@@ -68,8 +72,10 @@ export class CategoriasComponent implements AfterViewInit {
       && categoria.id !== undefined
       && categoria.id !== null) {
       if(confirm(`Deletar Categoria (${categoria.id}) ${categoria.nome} ?`)) {
+        this.showLoading = true;
         this.categoriaService.deletar(categoria.id).subscribe(
           data => {
+            this.showLoading = false;
             //Carregar Categorias após deletar:
             this.loadCategorias();
           }

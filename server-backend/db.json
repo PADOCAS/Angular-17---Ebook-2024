@@ -61,14 +61,9 @@
       "descricao": "Sobremesas e bolos"
     },
     {
-      "id": 16,
-      "nome": "Torta de Frango",
-      "descricao": "Torta Maravilhosa de Mamãe"
-    },
-    {
-      "id": 17,
-      "nome": "Pipoca",
-      "descricao": "Pipoca Doce e Salgada"
+      "id": 14,
+      "nome": "Teste",
+      "descricao": "Testando"
     }
   ],
   "products": [
