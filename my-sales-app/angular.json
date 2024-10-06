@@ -111,7 +111,7 @@
             "production": {
               "outputPath": "dist/my-sales-app/browser",
               "index": "index.html",
-              "base": "/Angular-17---Ebook-2024/"
+              "base": "/Angular-17---Ebook-2024/my-sales-app/"
             }
           }
         }
