@@ -59,11 +59,6 @@
       "id": 13,
       "nome": "Confeitaria Rei",
       "descricao": "Sobremesas e bolos"
-    },
-    {
-      "id": 14,
-      "nome": "Teste",
-      "descricao": "Testando"
     }
   ],
   "products": [

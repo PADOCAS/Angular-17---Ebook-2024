@@ -98,6 +98,22 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repositoryUrl": "https://github.com/PADOCAS/Angular-17---Ebook-2024.git",
+            "base": "dist/my-sales-app",
+            "reportWebpackStats": "false",
+            "ci": "true"
+          },
+          "configurations": {
+            "production": {
+              "outputPath": "dist/my-sales-app",
+              "index": "index.html",
+              "base": "/my-sales-app/"
+            }
+          }
         }
       }
     }
