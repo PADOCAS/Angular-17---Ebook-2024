@@ -4,8 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "copy-htaccess": "node copy-htaccess.js",
-    "build": "ng build --configuration=production && npm run copy-htaccess",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
