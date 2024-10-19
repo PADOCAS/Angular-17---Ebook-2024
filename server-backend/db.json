@@ -59,6 +59,11 @@
       "id": 13,
       "nome": "Confeitaria Rei",
       "descricao": "Sobremesas e bolos"
+    },
+    {
+      "id": 14,
+      "nome": "Bolo de Cenoura Rei",
+      "descricao": "Bolaço fantástico, feito com carinho pelas mãos de Cidinha"
     }
   ],
   "products": [
