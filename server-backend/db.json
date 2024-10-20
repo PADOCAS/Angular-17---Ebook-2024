@@ -64,6 +64,11 @@
       "id": 14,
       "nome": "Bolo de Cenoura Rei",
       "descricao": "Bolaço fantástico, feito com carinho pelas mãos de Cidinha"
+    },
+    {
+      "id": 15,
+      "nome": "Pipoca Jardim de Baixo",
+      "descricao": "Pipoca Rei"
     }
   ],
   "products": [
