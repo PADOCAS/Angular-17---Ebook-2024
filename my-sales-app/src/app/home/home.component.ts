@@ -9,7 +9,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {MenuComponent} from "../menu/menu.component";
-import {CategoriasComponent} from "../categorias/categorias.component";
 import {RouterOutlet} from "@angular/router";
 
 @Component({
@@ -25,7 +24,6 @@ import {RouterOutlet} from "@angular/router";
     MatIconModule,
     AsyncPipe,
     MenuComponent,
-    CategoriasComponent,
     RouterOutlet
   ]
 })

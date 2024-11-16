@@ -12,15 +12,15 @@ import {MenuItem} from "../../interface/MenuItem";
 export class MenuComponent {
   menuItems: Array<MenuItem> = [
     {
-      path: '/',
+      path: '',
       label: 'Início'
     },
     {
-      path: '/categorias',
+      path: 'categorias',
       label: 'Categorias'
     },
     {
-      path: '/fornecedores',
+      path: 'fornecedores',
       label: 'Fornecedores'
     }
   ];
