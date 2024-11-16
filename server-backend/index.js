@@ -13,4 +13,7 @@ server.use(router)
 //   console.log('Servidor JSON está rodando na Porta: ' + PORT)
 // })
 
-//Rodar Servidor Vercel -> Nao passar o server.listen
+//Rodar Servidor Vercel:
+server.listen(() => {
+    console.log('Servidor JSON está rodando')
+})
