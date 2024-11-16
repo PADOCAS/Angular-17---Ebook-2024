@@ -1,13 +1,13 @@
 {
   "name": "fake-server",
   "version": "1.0.0",
-  "description": "A fake-server with sales data",
+  "description": "fake-server",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "Daniel Schmitz <danieljfa@gmail.com>",
+  "author": "Luciano Decio Pacheco de Almeida Prado Neto <lucianodeciopacheco@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "json-server": "^0.17.0"
