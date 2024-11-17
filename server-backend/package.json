@@ -2,9 +2,10 @@
   "name": "fake-server",
   "version": "1.0.0",
   "description": "fake-server",
-  "main": "index.js",
+  "main": "public/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node public/index.js",
+    "build": "npm run build && vercel --prod"
   },
   "keywords": [],
   "author": "Luciano Decio Pacheco de Almeida Prado Neto <lucianodeciopacheco@gmail.com>",
