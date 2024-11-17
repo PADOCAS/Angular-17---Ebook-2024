@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTable, MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {LoadingBarComponent} from "../util/loading-bar/loading-bar.component";
+import * as console from "node:console";
 
 @Component({
   selector: 'app-categorias',
@@ -20,7 +21,7 @@ import {LoadingBarComponent} from "../util/loading-bar/loading-bar.component";
   standalone: true,
   imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButton, MatIconModule, MatTooltipModule, LoadingBarComponent]
 })
-export class CategoriasComponent implements AfterViewInit {
+export class CategoriasComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<CategoriasItem>;
@@ -29,12 +30,17 @@ export class CategoriasComponent implements AfterViewInit {
 
 
   constructor(private categoriaService: CategoriasService, private router: Router) {
+
   }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'nome', 'descricao', 'editar', 'excluir'];
 
   ngAfterViewInit(): void {
+    this.loadCategorias();
+  }
+
+  ngOnInit(): void {
     this.loadCategorias();
   }
 
@@ -71,7 +77,7 @@ export class CategoriasComponent implements AfterViewInit {
       && categoria !== null
       && categoria.id !== undefined
       && categoria.id !== null) {
-      if(confirm(`Deletar Categoria (${categoria.id}) ${categoria.nome} ?`)) {
+      if (confirm(`Deletar Categoria (${categoria.id}) ${categoria.nome} ?`)) {
         this.showLoading = true;
         this.categoriaService.deletar(categoria.id).subscribe(
           data => {
