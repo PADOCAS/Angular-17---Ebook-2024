@@ -20,7 +20,7 @@ import {LoadingBarComponent} from "../util/loading-bar/loading-bar.component";
   standalone: true,
   imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatCardModule, MatButton, MatIconModule, MatTooltipModule, LoadingBarComponent]
 })
-export class CategoriasComponent implements AfterViewInit, OnInit {
+export class CategoriasComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<CategoriasItem>;
@@ -34,10 +34,6 @@ export class CategoriasComponent implements AfterViewInit, OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'nome', 'descricao', 'editar', 'excluir'];
-
-  ngAfterViewInit(): void {
-    this.loadCategorias();
-  }
 
   ngOnInit(): void {
     this.loadCategorias();
