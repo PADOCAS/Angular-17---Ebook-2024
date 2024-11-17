@@ -37,9 +37,9 @@ const dbFilePath = path.join(__dirname, 'db.json');
 let db = {};
 
 // Carrega o banco de dados quando o servidor inicia
-function loadDB() {
+async function loadDB() {
     try {
-        const data = fs.readFile(dbFilePath, 'utf8');
+        const data = await fs.readFile(dbFilePath, 'utf8');
         if (data) {
             db = JSON.parse(data);
         }
