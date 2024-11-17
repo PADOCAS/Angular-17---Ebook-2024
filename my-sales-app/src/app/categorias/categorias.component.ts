@@ -12,7 +12,6 @@ import {Router} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {LoadingBarComponent} from "../util/loading-bar/loading-bar.component";
-import * as console from "node:console";
 
 @Component({
   selector: 'app-categorias',
