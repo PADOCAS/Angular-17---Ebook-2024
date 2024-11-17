@@ -18,34 +18,40 @@
 
 //Versel:
 const express = require('express');
-const fs = require('fs').promises;
-const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3000;
-
-// Caminho para o arquivo db.json
-const dbFilePath = path.join(__dirname, 'db.json');
 
 // Carrega o banco de dados quando o servidor inicia
 async function loadDB() {
     try {
         const data = await fs.readFile(dbFilePath, 'utf8');
-        return JSON.parse(data);
+        if (data) {
+            db = JSON.parse(data);
+        }
     } catch (error) {
         console.error('Erro ao carregar o banco de dados:', error);
-        // Se não conseguir ler o arquivo, retorne um objeto vazio
-        return {};
+        // Se não conseguir ler o arquivo, inicie com um objeto vazio
+        db = {};
     }
 }
 
-let db = await loadDB();
+async function saveDB() {
+    try {
+        await fs.writeFile(dbFilePath, JSON.stringify(db, null, 2));
+        console.log('Banco de dados salvo com sucesso.');
+    } catch (error) {
+        console.error('Erro ao salvar o banco de dados:', error);
+    }
+}
+
+// Carrega o banco de dados quando o servidor inicia
+loadDB();
 
 app.use(express.json());
 
 // Endpoint para listar todas as categorias
 app.get('/api/categorias', (req, res) => {
-    res.json(db.categorias);
+    res.json(db.categorias || []);
 });
 
 // Endpoint para buscar uma categoria por ID
@@ -97,16 +103,4 @@ app.delete('/api/categorias/:id', async (req, res) => {
     }
 });
 
-async function saveDB() {
-    try {
-        await fs.writeFile(dbFilePath, JSON.stringify(db, null, 2));
-        console.log('Banco de dados salvo com sucesso.');
-    } catch (error) {
-        console.error('Erro ao salvar o banco de dados:', error);
-    }
-}
-
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
-});
-
+module.exports = app;
