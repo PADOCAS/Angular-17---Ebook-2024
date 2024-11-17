@@ -46,6 +46,23 @@ function loadEnvironmentData() {
 // Carrega os dados inicialmente
 router.db = loadEnvironmentData();
 
+// Middleware personalizado para PUT requests
+server.use((req, res, next) => {
+    if (req.method === 'PUT') {
+        const dbContent = router.db;
+
+        // Atualiza o objeto db com os novos dados
+        router.db = { ...dbContent, ...req.body };
+
+        // Salva os dados atualizados na variável de ambiente
+        saveEnvironmentData(router.db);
+
+        next();
+    } else {
+        next();
+    }
+});
+
 // Função para salvar dados no ambiente de variáveis
 function saveEnvironmentData(data) {
     try {
@@ -55,45 +72,5 @@ function saveEnvironmentData(data) {
         console.error('Erro ao salvar dados no ambiente:', error);
     }
 }
-
-// Função para carregar dados do arquivo db.json e salvá-los em data.db
-function loadAndSaveData() {
-    let dbContent;
-
-    try {
-        // Tenta ler o conteúdo de db.json
-        const dbPath = path.join(__dirname, 'db.json');
-
-        if (fs.existsSync(dbPath)) {
-            dbContent = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-
-            // Salva os dados em data.db
-            fs.writeFileSync(path.join(__dirname, 'data.db'), JSON.stringify(dbContent));
-        } else {
-            console.log('Arquivo db.json não encontrado. Criando um novo.');
-            dbContent = {};
-        }
-
-        saveEnvironmentData(dbContent);
-    } catch (error) {
-        console.error('Erro ao carregar ou salvar dados:', error);
-        dbContent = {};
-    }
-
-    return dbContent;
-}
-
-// Carrega dados do arquivo ao iniciar o servidor
-router.db = loadAndSaveData();
-
-// Salvar dados no ambiente ao parar o servidor
-process.on('exit', () => {
-    try {
-        const envData = router.db;
-        saveEnvironmentData(envData);
-    } catch (error) {
-        console.error('Erro ao salvar dados no ambiente ao sair:', error);
-    }
-});
 
 module.exports = server;
