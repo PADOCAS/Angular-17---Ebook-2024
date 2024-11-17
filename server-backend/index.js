@@ -18,10 +18,19 @@
 
 //Versel:
 const express = require('express');
+const cors = require('cors');
 const fs = require('fs').promises;
 const path = require('path');
 
 const app = express();
+
+// Configurar CORS:
+const corsOptions = {
+    origin: '*', // Permite acesso de qualquer origem
+    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 // Caminho para o arquivo db.json
 const dbFilePath = path.join(__dirname, 'db.json');
