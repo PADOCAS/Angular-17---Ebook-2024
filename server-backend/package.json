@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "prebuild": "npm run build && npm install --only=production",
-    "build": "npm run prebuild && vercel --prod"
+    "build": "npm run build && vercel --prod"
   },
   "keywords": [],
   "author": "Luciano Decio Pacheco de Almeida Prado Neto <lucianodeciopacheco@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "express": "5.0.0",
     "json-server": "^0.17.0"
   }
 }
