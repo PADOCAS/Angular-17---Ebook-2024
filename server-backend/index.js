@@ -18,8 +18,14 @@
 
 //Versel:
 const express = require('express');
+const fs = require('fs').promises;
+const path = require('path');
 
 const app = express();
+
+// Caminho para o arquivo db.json
+const dbFilePath = path.join(__dirname, 'db.json');
+let db = {};
 
 // Carrega o banco de dados quando o servidor inicia
 async function loadDB() {
