@@ -1,7 +1,10 @@
 const express = require('express');
 const jsonServer = require('json-server')
 const server = jsonServer.create()
-const router = jsonServer.router('db.json')
+//Local:
+// const router = jsonServer.router('db.json')
+//Versel:
+const router = jsonServer.router({ db: {} });
 const middlewares = jsonServer.defaults()
 
 //Rodar Local:
