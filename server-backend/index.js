@@ -37,9 +37,9 @@ const dbFilePath = path.join(__dirname, 'db.json');
 let db = {};
 
 // Carrega o banco de dados quando o servidor inicia
-async function loadDB() {
+function loadDB() {
     try {
-        const data = await fs.readFile(dbFilePath, 'utf8');
+        const data = fs.readFile(dbFilePath, 'utf8');
         if (data) {
             db = JSON.parse(data);
         }
@@ -50,9 +50,9 @@ async function loadDB() {
     }
 }
 
-async function saveDB() {
+function saveDB() {
     try {
-        await fs.writeFile(dbFilePath, JSON.stringify(db, null, 2));
+        fs.writeFile(dbFilePath, JSON.stringify(db, null, 2));
         console.log('Banco de dados salvo com sucesso.');
     } catch (error) {
         console.error('Erro ao salvar o banco de dados:', error);
