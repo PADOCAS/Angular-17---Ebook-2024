@@ -9,15 +9,17 @@ import {CategoriasService} from "../categorias.service";
 import {lastValueFrom} from "rxjs";
 import {NgIf} from "@angular/common";
 import {MatGridList} from "@angular/material/grid-list";
+import {LoadingBarComponent} from "../../util/loading-bar/loading-bar.component";
 
 @Component({
   selector: 'app-cad-categoria',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, MatInputModule, MatCardModule, NgIf, MatGridList],
+  imports: [ReactiveFormsModule, MatButtonModule, MatInputModule, MatCardModule, NgIf, MatGridList, LoadingBarComponent],
   templateUrl: './cad-categoria.component.html',
   styleUrl: './cad-categoria.component.css'
 })
 export class CadCategoriaComponent implements OnInit {
+  showLoading: Boolean = false;
 // Vamos trabalhar com formulário reativo, usando FormBuilder, que agrupa um conjunto de campos de formulário,
 // Ele nos ajuda com esqueleto do formulário, validações, valor padrão... muito bom!
 
@@ -85,8 +87,10 @@ export class CadCategoriaComponent implements OnInit {
 
   async onSave(categoria: Categoria) {
     //Async/Await -> Esperando a resposta do salvar para ai sim redirecionar a página, já com a alteração sendo carregada lá na listagem!
+    this.showLoading = true;
     let saved = await lastValueFrom(this.categoriaService.salvar(categoria));
     console.log('Categoria salva: ', saved);
+    this.showLoading = false;
     //Ao salvar redireciona para a listagem:
     this.router.navigate(["/categorias"]);
   }

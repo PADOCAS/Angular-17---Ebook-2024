@@ -25,7 +25,7 @@ export class CategoriasComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<CategoriasItem>;
   dataSource = new MatTableDataSource<Categoria>();
-  showLoading: Boolean = false
+  showLoading: Boolean = false;
 
   constructor(private categoriaService: CategoriasService, private router: Router) {
   }
