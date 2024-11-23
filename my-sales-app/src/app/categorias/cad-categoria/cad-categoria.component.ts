@@ -84,7 +84,8 @@ export class CadCategoriaComponent implements OnInit {
   }
 
   async onSave(categoria: Categoria) {
-    let saved = lastValueFrom(this.categoriaService.salvar(categoria));
+    //Async/Await -> Esperando a resposta do salvar para ai sim redirecionar a página, já com a alteração sendo carregada lá na listagem!
+    let saved = await lastValueFrom(this.categoriaService.salvar(categoria));
     console.log('Categoria salva: ', saved);
     //Ao salvar redireciona para a listagem:
     this.router.navigate(["/categorias"]);
