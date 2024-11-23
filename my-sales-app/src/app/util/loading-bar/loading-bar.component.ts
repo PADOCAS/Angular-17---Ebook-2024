@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MaterialModule} from "../../material.module";
 
 @Component({
   selector: 'app-loading-bar',
   standalone: true,
-  imports: [MatProgressBarModule],
+  imports: [MaterialModule],
   templateUrl: './loading-bar.component.html',
   styleUrl: './loading-bar.component.css'
 })

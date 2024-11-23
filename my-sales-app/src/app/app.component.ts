@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {HomeComponent} from "./home/home.component";
+import {MaterialModule} from "./material.module";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatSlideToggleModule, HomeComponent],
+  imports: [CommonModule, MaterialModule, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

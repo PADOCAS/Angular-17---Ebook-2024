@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {MatListModule} from "@angular/material/list";
 import {MenuItem} from "../../interface/MenuItem";
+import {MaterialModule} from "../material.module";
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [MatListModule],
+  imports: [MaterialModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })

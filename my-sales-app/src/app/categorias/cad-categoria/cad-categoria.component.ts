@@ -1,20 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatButtonModule} from "@angular/material/button";
-import {MatInputModule} from "@angular/material/input";
-import {MatCardModule} from "@angular/material/card";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Categoria} from "../../../interface/Categoria";
 import {CategoriasService} from "../categorias.service";
 import {lastValueFrom} from "rxjs";
 import {NgIf} from "@angular/common";
-import {MatGridList} from "@angular/material/grid-list";
 import {LoadingBarComponent} from "../../util/loading-bar/loading-bar.component";
+import {MaterialModule} from "../../material.module";
 
 @Component({
   selector: 'app-cad-categoria',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, MatInputModule, MatCardModule, NgIf, MatGridList, LoadingBarComponent],
+  imports: [ReactiveFormsModule, MaterialModule, NgIf, LoadingBarComponent],
   templateUrl: './cad-categoria.component.html',
   styleUrl: './cad-categoria.component.css'
 })
