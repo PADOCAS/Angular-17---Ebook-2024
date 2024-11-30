@@ -1,25 +1,24 @@
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge } from 'rxjs';
+import {DataSource} from '@angular/cdk/collections';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {map} from 'rxjs/operators';
+import {merge, Observable, of as observableOf} from 'rxjs';
 
-export interface CategoriasItem {
+export interface FornecedoresItem {
   id: number;
-  nome: string;
-  descricao: string;
+  razaoSocial: string;
+  tituloContato: string;
 }
 
-const EXAMPLE_DATA: CategoriasItem[] = [
-];
+const EXAMPLE_DATA: FornecedoresItem[] = [];
 
 /**
- * Data source for the Categorias view. This class should
+ * Data source for the Fornecedores view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class CategoriasDataSource extends DataSource<CategoriasItem> {
-  data: CategoriasItem[] = EXAMPLE_DATA;
+export class FornecedoresDataSource extends DataSource<FornecedoresItem> {
+  data: FornecedoresItem[] = EXAMPLE_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -32,13 +31,13 @@ export class CategoriasDataSource extends DataSource<CategoriasItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<CategoriasItem[]> {
+  connect(): Observable<FornecedoresItem[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
       return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data ]));
+          return this.getPagedData(this.getSortedData([...this.data]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -49,13 +48,14 @@ export class CategoriasDataSource extends DataSource<CategoriasItem> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect(): void {}
+  disconnect(): void {
+  }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: CategoriasItem[]): CategoriasItem[] {
+  private getPagedData(data: FornecedoresItem[]): FornecedoresItem[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -68,7 +68,7 @@ export class CategoriasDataSource extends DataSource<CategoriasItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: CategoriasItem[]): CategoriasItem[] {
+  private getSortedData(data: FornecedoresItem[]): FornecedoresItem[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -76,10 +76,14 @@ export class CategoriasDataSource extends DataSource<CategoriasItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name': return compare(a.nome, b.nome, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        case 'descricao': return compare(+a.descricao, +b.descricao, isAsc);
-        default: return 0;
+        case 'id':
+          return compare(+a.id, +b.id, isAsc);
+        case 'razaoSocial':
+          return compare(a.razaoSocial, b.razaoSocial, isAsc);
+        case 'tituloContato':
+          return compare(a.tituloContato, b.tituloContato, isAsc);
+        default:
+          return 0;
       }
     });
   }

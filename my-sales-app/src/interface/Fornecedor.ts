@@ -5,5 +5,5 @@ export interface Fornecedor {
   razaoSocial: string
   nomeFantasia: string
   tituloContato: string
-  endereco: Endereco
+  endereco: Endereco | null
 }

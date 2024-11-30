@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {CadCategoriaComponent} from "./categorias/cad-categoria/cad-categoria.component";
+import {FornecedoresComponent} from "./fornecedores/fornecedores.component";
 
 export const routes: Routes = [
   {
@@ -19,6 +20,20 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./fornecedores/fornecedores.component').then(
         (c) => c.FornecedoresComponent
+      )
+  },
+  {
+    path: 'cad-fornecedor',
+    loadComponent: () =>
+      import('./fornecedores/cad-fornecedor/cad-fornecedor.component').then(
+        (c) => c.CadFornecedorComponent
+      )
+  },
+  {
+    path: 'cad-fornecedor-edit/:id',
+    loadComponent: () =>
+      import('./fornecedores/cad-fornecedor/cad-fornecedor.component').then(
+        (c) => c.CadFornecedorComponent
       )
   },
   {path: '', component: DashboardComponent}

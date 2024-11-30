@@ -28,7 +28,7 @@ export class CategoriasComponent implements AfterViewInit {
   constructor(private categoriaService: CategoriasService, private router: Router) {
   }
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  /** Colunas da tabela, servem para reordenar, etc.. */
   displayedColumns = ['id', 'nome', 'descricao', 'editar', 'excluir'];
 
   ngAfterViewInit(): void {
@@ -38,8 +38,8 @@ export class CategoriasComponent implements AfterViewInit {
   async loadCategorias(): Promise<void> {
     //Chamada assincrona, para alimentar  o data source ele aguarda a resposta do service com as categorias:
     this.showLoading = true;
-    let categories = await lastValueFrom(this.categoriaService.getCategorias());
-    this.dataSource = new MatTableDataSource(categories);
+    let categorias = await lastValueFrom(this.categoriaService.getCategorias());
+    this.dataSource = new MatTableDataSource(categorias);
     this.table.dataSource = this.dataSource;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
