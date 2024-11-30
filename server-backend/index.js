@@ -74,6 +74,7 @@ loadDB();
 
 app.use(express.json());
 
+/**** -------------  Categorias: -------------------****/
 // Endpoint para listar todas as categorias
 app.get('/api/categorias', async (req, res) => {
     const db = await loadDB();
@@ -84,9 +85,9 @@ app.get('/api/categorias', async (req, res) => {
 app.get('/api/categorias/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     const db = await loadDB();
-    const category = db.categorias.find(c => c.id === id);
-    if (category) {
-        res.json(category);
+    const categoria = db.categorias.find(c => c.id === id);
+    if (categoria) {
+        res.json(categoria);
     } else {
         res.status(404).json({ message: 'Categoria não encontrada' });
     }
@@ -94,15 +95,21 @@ app.get('/api/categorias/:id', async (req, res) => {
 
 // Endpoint para adicionar uma nova categoria
 app.post('/api/categorias', async (req, res) => {
-    const newCategory = {
-        id: Date.now(),
+    // Ler os IDs existentes das categorias
+    let listIdsCategorias = db.categorias.map(categoria => parseInt(categoria.id));
+    // Encontrar o maior ID
+    let maiorId = Math.max(...listIdsCategorias);
+    // Calcular o próximo ID
+    let proximoId = maiorId + 1;
+    const novaCategoria = {
+        id: proximoId,
         nome: req.body.nome,
         descricao: req.body.descricao
     };
     const db = await loadDB();
-    db.categorias.push(newCategory);
+    db.categorias.push(novaCategoria);
     saveDB();
-    res.status(201).json(newCategory);
+    res.status(201).json(novaCategoria);
 });
 
 // Endpoint para atualizar uma categoria
@@ -130,6 +137,71 @@ app.delete('/api/categorias/:id', async (req, res) => {
         res.status(204).send('Categoria deletada com sucesso');
     } else {
         res.status(404).json({ message: 'Categoria não encontrada' });
+    }
+});
+
+/**** -------------  Fornecedores: -------------------****/
+app.get('/api/fornecedores', async (req, res) => {
+    const db = await loadDB();
+    res.json(db.fornecedores || []);
+});
+
+// Endpoint para buscar um Fornecedor por ID
+app.get('/api/fornecedores/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const db = await loadDB();
+    const fornecedor = db.fornecedores.find(c => c.id === id);
+    if (fornecedor) {
+        res.json(fornecedor);
+    } else {
+        res.status(404).json({ message: 'Fornecedor não encontrado' });
+    }
+});
+
+// Endpoint para adicionar um novo Fornecedor
+app.post('/api/fornecedores', async (req, res) => {
+    // Ler os IDs existentes dos fornecedores
+    let listIdsFornecedores = db.fornecedores.map(fornecedor => parseInt(fornecedor.id));
+    // Encontrar o maior ID
+    let maiorId = Math.max(...listIdsFornecedores);
+    // Calcular o próximo ID
+    let proximoId = maiorId + 1;
+    const novoFornecedor = {
+        id: proximoId,
+        razaoSocial: req.body.nome,
+        tituloContato: req.body.descricao
+    };
+    const db = await loadDB();
+    db.fornecedores.push(novoFornecedor);
+    saveDB();
+    res.status(201).json(novoFornecedor);
+});
+
+// Endpoint para atualizar um Fornecedor
+app.put('/api/fornecedores/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const db = await loadDB();
+    const index = db.fornecedores.findIndex(c => c.id === id);
+    if (index !== -1) {
+        Object.assign(db.fornecedores[index], req.body);
+        saveDB();
+        res.json(db.fornecedores[index]);
+    } else {
+        res.status(404).json({ message: 'Fornecedor não encontrado' });
+    }
+});
+
+// Endpoint para deletar um fornecedor
+app.delete('/api/fornecedores/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const db = await loadDB();
+    const index = db.fornecedores.findIndex(c => c.id === id);
+    if (index !== -1) {
+        db.fornecedores.splice(index, 1);
+        saveDB();
+        res.status(204).send('Fornecedor deletado com sucesso');
+    } else {
+        res.status(404).json({ message: 'Fornecedor não encontrado' });
     }
 });
 
