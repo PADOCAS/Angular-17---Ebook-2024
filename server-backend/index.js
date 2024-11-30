@@ -95,18 +95,23 @@ app.get('/api/categorias/:id', async (req, res) => {
 
 // Endpoint para adicionar uma nova categoria
 app.post('/api/categorias', async (req, res) => {
+    //Carrega o banco:
+    let db = await loadDB();
+
     // Ler os IDs existentes das categorias
     let listIdsCategorias = db.categorias.map(categoria => parseInt(categoria.id));
     // Encontrar o maior ID
     let maiorId = Math.max(...listIdsCategorias);
     // Calcular o próximo ID
     let proximoId = maiorId + 1;
-    const novaCategoria = {
+
+    //id: Date.now() //Caso quiser definir um ID com a data!
+    let novaCategoria = {
         id: proximoId,
         nome: req.body.nome,
         descricao: req.body.descricao
     };
-    const db = await loadDB();
+
     db.categorias.push(novaCategoria);
     saveDB();
     res.status(201).json(novaCategoria);
@@ -160,18 +165,23 @@ app.get('/api/fornecedores/:id', async (req, res) => {
 
 // Endpoint para adicionar um novo Fornecedor
 app.post('/api/fornecedores', async (req, res) => {
+    //Carrega o banco:
+    let db = await loadDB();
+
     // Ler os IDs existentes dos fornecedores
     let listIdsFornecedores = db.fornecedores.map(fornecedor => parseInt(fornecedor.id));
     // Encontrar o maior ID
     let maiorId = Math.max(...listIdsFornecedores);
     // Calcular o próximo ID
     let proximoId = maiorId + 1;
-    const novoFornecedor = {
+
+    //id: Date.now() //Caso quiser definir um ID com a data!
+    let novoFornecedor = {
         id: proximoId,
         razaoSocial: req.body.nome,
         tituloContato: req.body.descricao
     };
-    const db = await loadDB();
+
     db.fornecedores.push(novoFornecedor);
     saveDB();
     res.status(201).json(novoFornecedor);
