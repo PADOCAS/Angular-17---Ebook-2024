@@ -1,8 +1,8 @@
 export interface Endereco {
-  rua: string
-  cidade: string
-  bairro: string
-  cep: number
-  pais: string
-  telefone: string
+  rua: string | null
+  cidade: string | null
+  bairro: string | null
+  cep: number | null
+  pais: string | null
+  telefone: string | null
 }

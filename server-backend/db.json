@@ -876,6 +876,12 @@
         "pais": "Brasil",
         "telefone": "(11) 3555-5011"
       }
+    },
+    {
+      "id": 3,
+      "razaoSocial": "Jackson Automóveis",
+      "nomeFantasia": "Jackson Antunes",
+      "tituloContato": "Aluguel veículos"
     }
   ]
 }

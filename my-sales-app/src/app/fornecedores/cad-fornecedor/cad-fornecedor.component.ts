@@ -29,9 +29,16 @@ export class CadFornecedorComponent implements OnInit {
   fornecedorForm = this.form.group({
     id: [null as number | null],
     razaoSocial: ['', [Validators.required, Validators.minLength(3)]],
-    tituloContato: ['', [Validators.required]],
-    nomeFantasia: ['', [Validators.required]]
-    // endereco: [Endereco || null, [Validators.required]]
+    tituloContato: ['', [Validators.required, Validators.minLength(3)]],
+    nomeFantasia: ['', [Validators.required, Validators.minLength(3)]],
+    endereco: this.form.group({
+      rua: [''],
+      cidade: [''],
+      bairro: [''],
+      cep: [null as number | null],
+      pais: [''],
+      telefone: ['']
+    })
   })
 
   constructor(private fornecedoresService: FornecedoresService, private form: FormBuilder, private router: Router, private routeActive: ActivatedRoute) {
@@ -52,17 +59,24 @@ export class CadFornecedorComponent implements OnInit {
             && data !== null) {
             let fornecedor = data as Fornecedor;
 
-            //TODO....
-            // this.fornecedorForm.setValue({
-            //   id: fornecedor.id,
-            //   razaoSocial: fornecedor.razaoSocial,
-            //   tituloContato: fornecedor.tituloContato,
-            //   nomeFantasia: fornecedor.nomeFantasia,
-            //   endereco: fornecedor.endereco
-            // });
+            //Endereço pode ser NULO, tratar certinho para os casos especificos
+            this.fornecedorForm.setValue({
+              id: fornecedor.id,
+              razaoSocial: fornecedor.razaoSocial,
+              tituloContato: fornecedor.tituloContato,
+              nomeFantasia: fornecedor.nomeFantasia,
+              endereco: {
+                rua: fornecedor.endereco?.rua || null,
+                cidade: fornecedor.endereco?.cidade || null,
+                cep: fornecedor.endereco?.cep || null,
+                bairro: fornecedor.endereco?.bairro || null,
+                pais: fornecedor.endereco?.pais || null,
+                telefone: fornecedor.endereco?.telefone || null
+              }
+            });
 
             //Desabilita o ID quando é consulta, apenas mostra
-            // this.fornecedorForm.get('id')?.disable();
+            this.fornecedorForm.get('id')?.disable();
           }
         }
       );

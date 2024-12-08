@@ -14,7 +14,7 @@
         </div>
 
         <div class="container">
-          <mat-form-field class="item-30">
+          <mat-form-field class="item">
             <mat-label>Razão Social</mat-label>
             <input matInput formControlName="razaoSocial"/>
             @if (fornecedorForm.controls['razaoSocial'].hasError('required')) {
@@ -24,12 +24,66 @@
               <mat-error>Razão Social deve ter no mínimo 3 caracteres</mat-error>
             }
           </mat-form-field>
-          <mat-form-field class="item-70">
+        </div>
+
+        <div class="container">
+          <mat-form-field class="item">
+            <mat-label>Nome Fantasia</mat-label>
+            <input matInput formControlName="nomeFantasia"/>
+            @if (fornecedorForm.controls['nomeFantasia'].hasError('required')) {
+              <mat-error>Nome Fantasia é <strong>requerida</strong></mat-error>
+            }
+            @if (fornecedorForm.controls['nomeFantasia'].hasError('minlength')) {
+              <mat-error>Nome Fantasia deve ter no mínimo 3 caracteres</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="item">
             <mat-label>Título Contato</mat-label>
-            <input matInput formControlName="tituloContato">
+            <input matInput formControlName="tituloContato"/>
             @if (fornecedorForm.controls['tituloContato'].hasError('required')) {
               <mat-error>Título Contato é <strong>requerido</strong></mat-error>
             }
+            @if (fornecedorForm.controls['tituloContato'].hasError('minlength')) {
+              <mat-error>Título Contato deve ter no mínimo 3 caracteres</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <mat-card-subtitle>Endereço</mat-card-subtitle>
+
+        <div class="container" formGroupName="endereco" >
+          <mat-form-field class="item">
+            <mat-label>Logradouro</mat-label>
+            <input matInput formControlName="rua"/>
+          </mat-form-field>
+        </div>
+
+        <div class="container" formGroupName="endereco">
+          <mat-form-field class="item">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="cidade"/>
+          </mat-form-field>
+
+          <mat-form-field class="item">
+            <mat-label>Bairro</mat-label>
+            <input matInput formControlName="bairro"/>
+          </mat-form-field>
+
+          <mat-form-field class="item">
+            <mat-label>País</mat-label>
+            <input matInput formControlName="pais"/>
+          </mat-form-field>
+        </div>
+
+        <div class="container" formGroupName="endereco">
+          <mat-form-field class="item">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="cep" matIn/>
+          </mat-form-field>
+
+          <mat-form-field class="item">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone"/>
           </mat-form-field>
         </div>
       </div>
